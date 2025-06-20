@@ -4,9 +4,7 @@
     "package": "io.github.lucunji.oneclickoneblock.mixin",
     "compatibilityLevel": "JAVA_18",
     "mixins": [],
-    "client": [
-        "MixinTitleScreen"
-    ],
+    "client": [],
     "server": [],
     "injectors": {
         "defaultRequire": 1

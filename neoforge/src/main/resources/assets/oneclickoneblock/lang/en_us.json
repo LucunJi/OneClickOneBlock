@@ -5,5 +5,8 @@
 
     "oneclickoneblock.configuration.delay_ticks": "Delay Ticks",
     "oneclickoneblock.configuration.delay_ticks.desc": "Amount of delay after insta-breaking the first block in ticks.",
-    "oneclickoneblock.configuration.delay_ticks.tooltip": "Amount of delay after insta-breaking the first block in ticks."
+    "oneclickoneblock.configuration.delay_ticks.tooltip": "Amount of delay after insta-breaking the first block in ticks.",
+
+    "key.categories.oneclickoneblock": "One Click One Block",
+    "key.oneclickoneblock.disable_delay": "Disable Insta-breaking Delay"
 }

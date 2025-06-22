@@ -5,7 +5,10 @@
     "refmap": "${mod_id}.refmap.json",
     "compatibilityLevel": "JAVA_18",
     "mixins": [],
-    "client": [],
+    "client": [
+        "MixinMinecraft",
+        "MultiPlayerGameModeAccessor"
+    ],
     "server": [],
     "injectors": {
         "defaultRequire": 1

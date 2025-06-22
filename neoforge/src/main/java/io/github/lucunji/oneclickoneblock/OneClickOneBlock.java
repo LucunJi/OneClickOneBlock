@@ -13,7 +13,7 @@ public class OneClickOneBlock {
     public OneClickOneBlock(IEventBus eventBus, ModContainer container) {
         // Use NeoForge to bootstrap the Common mod.
         CommonClass.init();
-        container.registerConfig(ModConfig.Type.CLIENT, NFConfigs.CONFIG_SPEC);
+        container.registerConfig(ModConfig.Type.CLIENT, Configs.CONFIG_SPEC);
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
     }
 }

@@ -1,6 +1,6 @@
-package io.github.lucunji.oneclickoneblock;
+package io.github.lucunji.oneclickoneblock.register;
 
-import org.lwjgl.glfw.GLFW;
+import io.github.lucunji.oneclickoneblock.Constants;
 
 import com.mojang.blaze3d.platform.InputConstants;
 
@@ -12,16 +12,15 @@ import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import net.neoforged.neoforge.common.util.Lazy;
 
-@EventBusSubscriber(value=Dist.CLIENT, bus=EventBusSubscriber.Bus.MOD)
-public class ClientInit {
+@EventBusSubscriber(value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
+public class RegisterClientOnly {
 
     public static final Lazy<KeyMapping> DISABLE_DELAY = Lazy.of(() -> new KeyMapping(
-                "key." + Constants.MOD_ID + ".disable_delay",
-                KeyConflictContext.IN_GAME,
-                InputConstants.Type.KEYSYM,
-                InputConstants.UNKNOWN.getValue(),
-                "key.categories." + Constants.MOD_ID
-    ));
+            Constants.KeyMappings.DISABLE_DELAY,
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            Constants.KeyMappings.CATEGORY));
 
     @SubscribeEvent
     public static void registerBindings(RegisterKeyMappingsEvent event) {

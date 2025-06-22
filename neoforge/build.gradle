@@ -21,7 +21,7 @@ neoForge {
         }
         client {
             client()
-
+            // fix crashing on Linux with NVIDIA
             environment('__GL_THREADED_OPTIMIZATIONS', '0')
         }
         data {

@@ -4,10 +4,7 @@
     "package": "io.github.lucunji.oneclickoneblock.mixin",
     "compatibilityLevel": "JAVA_21",
     "mixins": [],
-    "client": [
-        "MixinMinecraft",
-        "MultiPlayerGameModeAccessor"
-    ],
+    "client": [],
     "server": [],
     "injectors": {
         "defaultRequire": 1

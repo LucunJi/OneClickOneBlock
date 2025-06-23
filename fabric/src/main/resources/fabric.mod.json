@@ -9,7 +9,8 @@
     ],
     "contact": {
         "homepage": "https://github.com/LucunJi/OneClickOneBlock",
-        "sources": "https://github.com/LucunJi/OneClickOneBlock"
+        "sources": "https://github.com/LucunJi/OneClickOneBlock",
+        "issues": "https://github.com/LucunJi/OneClickOneBlock/issues"
     },
     "license": "${license}",
     "icon": "${mod_id}.png",

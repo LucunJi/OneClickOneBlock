@@ -1,0 +1,74 @@
+# Parchment
+- repository: https://maven.parchmentmc.org
+  groupId: org.parchmentmc.data
+  artifactId: "parchment-${mcVersion}"
+  version: "*"
+  properties:
+    parchment_minecraft:
+      source: wildcard
+      name: mcVersion
+    parchment_version:
+      source: version
+
+# #################################################
+# #                    NeoForge                   #
+# #################################################
+
+# NeoForge
+- repository: https://maven.neoforged.net/releases
+  groupId: net.neoforged
+  artifactId: neoforge
+  version: "${mcMinor}.${mcPatch}.*"
+  properties:
+    neoforge_version:
+      source: version
+
+# #################################################
+# #                     Fabric                    #
+# #################################################
+
+# Fabric Loader
+- repository: https://maven.fabricmc.net
+  groupId: net.fabricmc
+  artifactId: fabric-loader
+  version: "*"
+  properties:
+    fabric_loader_version:
+      source: version
+
+# Fabric API
+- repository: https://maven.fabricmc.net
+  groupId: net.fabricmc.fabric-api
+  artifactId: fabric-api
+  version: "*+${mcVersion}"
+  properties:
+    fabric_version:
+      source: version
+
+# Cloth Config API (Fabric)
+# TODO: search modrinth/curseforge for correct version
+- repository: https://maven.shedaniel.me/
+  groupId: me.shedaniel.cloth
+  artifactId: cloth-config-fabric
+  version: "15.*"
+  properties:
+    cloth_config_fabric_version:
+      source: version
+
+# Mod Menu
+# 8.*: 1.20.2
+# 9:*: 1.20.3-1.20.4
+# 10.*: 1.20.5-1.20.6
+# 11.*: 1.21-1.21.1
+# 12.*: 1.21.2-1.21.3
+# 13.*: 1.21.4
+# 14.*: 1.21.5
+# 15.*: 1.21.6
+# TODO: search modrinth/curseforge for correct version
+- repository: https://maven.terraformersmc.com/releases/
+  groupId: com.terraformersmc
+  artifactId: modmenu
+  version: "11.*"
+  properties:
+    mod_menu_version:
+      source: version

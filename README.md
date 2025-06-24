@@ -1,4 +1,4 @@
-# OneBlockOneClick
+# OneClickOneBlock
 
 ![](icons/1024x256.png)
 

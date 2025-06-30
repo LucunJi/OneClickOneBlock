@@ -91,8 +91,8 @@ jobs:
       - name: Release Fabric Version
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          # modrinth-id: 7q8r8AtY
-          # modrinth-token: ${{ secrets.MODRINTH_AUTHORIZATION_TOKEN }}
+          modrinth-id: kuRp6C26
+          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
           curseforge-id: 1292580
           curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
 
@@ -104,8 +104,8 @@ jobs:
       - name: Release NeoForge Version
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          # modrinth-id: 7q8r8AtY
-          # modrinth-token: ${{ secrets.MODRINTH_AUTHORIZATION_TOKEN }}
+          modrinth-id: kuRp6C26
+          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
           curseforge-id: 1292580
           curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
 

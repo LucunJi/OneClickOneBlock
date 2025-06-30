@@ -66,28 +66,50 @@ jobs:
 
           {
             echo "version=${__props[minecraft_version]}-${__props[version]}"
-            echo "game_versions=${__props[minecraft_version]}"
 
-            echo 'files<<EOF'
+            echo 'files_all<<EOF'
             find ./neoforge/build/libs/ ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev'
             echo EOF
+
+            echo "file_fabric=$(find ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
+            echo "file_nf=$(find ./neoforge/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
 
             echo "release_name=${__props[name]} v${__props[version]} for mc ${__props[minecraft_version]}"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Release
+      - name: Release to GitHub
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          github-tag: ${{ github.ref_name }}
+          github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.files_all }}
+          name: ${{ steps.release_info.outputs.release_name }}
+
+      - name: Release Fabric Version
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           # modrinth-id: 7q8r8AtY
           # modrinth-token: ${{ secrets.MODRINTH_AUTHORIZATION_TOKEN }}
           curseforge-id: 1292580
           curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
-          github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
 
           java: ${{ env.JAVA_VERSION }}
           version: ${{ steps.release_info.outputs.version }}
-          game-versions: ${{ steps.release_info.outputs.game_versions }}
-          files: ${{ steps.release_info.outputs.files }}
-          name: ${{ steps.release_info.outputs.release_name }}
+          files: ${{ steps.release_info.outputs.file_fabric }}
+          name: ${{ steps.release_info.outputs.release_name }} (Fabric)
 
-          github-tag: ${{ github.ref_name }}
+      - name: Release NeoForge Version
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          # modrinth-id: 7q8r8AtY
+          # modrinth-token: ${{ secrets.MODRINTH_AUTHORIZATION_TOKEN }}
+          curseforge-id: 1292580
+          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.file_nf }}
+          name: ${{ steps.release_info.outputs.release_name }} (NeoForge)

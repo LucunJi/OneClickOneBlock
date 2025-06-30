@@ -80,8 +80,8 @@ jobs:
         with:
           # modrinth-id: 7q8r8AtY
           # modrinth-token: ${{ secrets.MODRINTH_AUTHORIZATION_TOKEN }}
-          # curseforge-id: 372888
-          # curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+          curseforge-id: 1292580
+          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
           github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
 
           java: ${{ env.JAVA_VERSION }}

@@ -28,10 +28,11 @@
         "${mod_id}.fabric.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=${fabric_loader_version}",
+        "fabricloader": "*",
         "fabric-key-binding-api-v1": "*",
-        "minecraft": "${minecraft_version}",
-        "java": ">=${java_version}"
+        "minecraft": ">=1.21 <=1.21.6",
+        "java": ">=${java_version}",
+        "cloth-config": "*"
     },
     "suggests": {
         "modmenu": "*"

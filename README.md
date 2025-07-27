@@ -9,7 +9,7 @@
 
 [![CurseForge Versions](https://cf.way2muchnoise.eu/versions/1292580.svg)](https://www.curseforge.com/minecraft/mc-mods/one-click-one-block-1c1b)
 
-Adds a little delay after breaking the first block, so you won't accidentally break the next block with an instant mining tool.
+Adds a little delay after insta-breaking the first block, so you won't accidentally break the next block with an instant mining tool.
 
 ## Features:
 

@@ -8,7 +8,7 @@
         "${mod_author}"
     ],
     "contact": {
-        "homepage": "https://github.com/LucunJi/OneClickOneBlock",
+        "homepage": "https://modrinth.com/mod/oneclickoneblock",
         "sources": "https://github.com/LucunJi/OneClickOneBlock",
         "issues": "https://github.com/LucunJi/OneClickOneBlock/issues"
     },
@@ -30,7 +30,7 @@
     "depends": {
         "fabricloader": "*",
         "fabric-key-binding-api-v1": "*",
-        "minecraft": ">=1.21 <=1.21.6",
+        "minecraft": ">=1.21 <=1.21.8",
         "java": ">=${java_version}",
         "cloth-config": "*"
     },

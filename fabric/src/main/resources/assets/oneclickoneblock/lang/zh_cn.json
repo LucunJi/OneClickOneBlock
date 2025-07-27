@@ -1,0 +1,7 @@
+{
+    "text.autoconfig.oneclickoneblock.title": "点到为止",
+    "text.autoconfig.oneclickoneblock.option.delayTicks": "延迟游戏刻数",
+
+    "key.categories.oneclickoneblock": "点到为止",
+    "key.oneclickoneblock.disable_delay": "禁止在瞬间破坏后添加延迟"
+}

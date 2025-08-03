@@ -68,11 +68,11 @@ jobs:
             echo "version=${__props[minecraft_version]}-${__props[version]}"
 
             echo 'files_all<<EOF'
-            find ./neoforge/build/libs/ ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev'
+            find ./forge/build/libs/ ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev'
             echo EOF
 
             echo "file_fabric=$(find ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
-            echo "file_nf=$(find ./neoforge/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
+            echo "file_forge=$(find ./forge/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
 
             echo "release_name=${__props[name]} v${__props[version]} for mc ${__props[minecraft_version]}"
           } >> "$GITHUB_OUTPUT"
@@ -101,7 +101,7 @@ jobs:
           files: ${{ steps.release_info.outputs.file_fabric }}
           name: ${{ steps.release_info.outputs.release_name }} (Fabric)
 
-      - name: Release NeoForge Version
+      - name: Release Forge Version
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: kuRp6C26
@@ -111,5 +111,5 @@ jobs:
 
           java: ${{ env.JAVA_VERSION }}
           version: ${{ steps.release_info.outputs.version }}
-          files: ${{ steps.release_info.outputs.file_nf }}
-          name: ${{ steps.release_info.outputs.release_name }} (NeoForge)
+          files: ${{ steps.release_info.outputs.file_forge }}
+          name: ${{ steps.release_info.outputs.release_name }} (Forge)

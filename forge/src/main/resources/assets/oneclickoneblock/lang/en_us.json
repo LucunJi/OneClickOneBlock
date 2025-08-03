@@ -1,12 +1,5 @@
 {
-    "fml.menu.mods.info.description.oneclickoneblock": "Adds a little delay after insta-breaking the first block, so you won''t accidentally break the next block with an instant mining tool.",
-
-    "oneclickoneblock.configuration.title": "One Click One Block",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml.title": "One Click One Block Configuration",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml": "One Click One Block",
-
     "oneclickoneblock.configuration.delay_ticks": "Delay Ticks",
-    "oneclickoneblock.configuration.delay_ticks.desc": "Amount of delay after insta-breaking the first block in ticks.",
     "oneclickoneblock.configuration.delay_ticks.tooltip": "Amount of delay after insta-breaking the first block in ticks.",
 
     "key.categories.oneclickoneblock": "One Click One Block",

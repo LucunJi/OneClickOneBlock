@@ -1,13 +1,6 @@
 {
-    "fml.menu.mods.info.description.oneclickoneblock": "在瞬间破坏首个方块后添加少量延迟，防止误挖后面的方块。",
-
-    "oneclickoneblock.configuration.title": "点到为止",
-
     "oneclickoneblock.configuration.delay_ticks": "延迟游戏刻数",
-    "oneclickoneblock.configuration.delay_ticks.desc": "瞬间破坏首个方块后的延迟。",
     "oneclickoneblock.configuration.delay_ticks.tooltip": "瞬间破坏首个方块后的延迟。",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml.title": "点到为止 配置",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml": "点到为止",
 
     "key.categories.oneclickoneblock": "点到为止",
     "key.oneclickoneblock.disable_delay": "禁止在瞬间破坏后添加延迟"

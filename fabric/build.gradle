@@ -27,8 +27,6 @@ dependencies {
 
     modRuntimeOnly "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     modImplementation "com.terraformersmc:modmenu:${mod_menu_version}"
-
-    implementation project(":common")
 }
 
 loom {

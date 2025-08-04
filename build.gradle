@@ -2,5 +2,5 @@ plugins {
     // see https://fabricmc.net/develop/ for new versions
     id 'fabric-loom' version "${loom_version}" apply false
     // id 'fabric-loom' version '1.7-SNAPSHOT' apply false
-    id 'net.neoforged.moddev.legacyforge' version "${legacyforgegradle_version}" apply false
+    id 'net.neoforged.moddev' version "${moddevgradle_version}" apply false
 }

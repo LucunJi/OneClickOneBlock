@@ -78,11 +78,34 @@ jar {
     }
 }
 
+def maven_range_to_semver(input) {
+    var mvnPattern = ~/^[\[(](.*),(.*)[\])]$/
+    input = input.strip()
+    var matcher = mvnPattern.matcher(input)
+    if (!matcher.matches())
+        return input
+
+    String left = matcher.group(1).strip(), right = matcher.group(2).strip()
+    String leftSymbol = input.charAt(0) == '[' ? ">=" : ">"
+    String rightSymbol = input.charAt(input.length() - 1) == ']' ? "<=" : "<"
+
+    if (left.length() == 0 && right.length() == 0) {
+        throw new GradleException("Invalid Maven version range: ${minecraft_version_range_semver}")
+    } else if (left.length() == 0) {
+        return rightSymbol + right
+    } else if (right.length() == 0) {
+        return leftSymbol + left
+    } else {
+        return leftSymbol + left + " " + rightSymbol + right
+    }
+}
+
 processResources {
     var expandProps = ['version'                      : version,
                        'group'                        : project.group, //Else we target the task's group.
                        'minecraft_version'            : minecraft_version,
-                       // 'minecraft_version_range'      : minecraft_version_range,
+                       'minecraft_version_range_maven': minecraft_version_range_maven,
+                       'minecraft_version_range_semver': maven_range_to_semver(minecraft_version_range_maven),
                        'fabric_version'               : fabric_version,
                        'fabric_loader_version'        : fabric_loader_version,
                        'mod_name'                     : mod_name,

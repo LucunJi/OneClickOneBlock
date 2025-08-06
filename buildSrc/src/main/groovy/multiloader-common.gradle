@@ -1,3 +1,6 @@
+import java.util.regex.Pattern
+import java.util.regex.Matcher
+
 plugins {
     id 'java-library'
     id 'maven-publish'
@@ -78,9 +81,9 @@ jar {
 }
 
 def maven_range_to_semver(input) {
-    var mvnPattern = ~/^[\[(](.*),(.*)[\])]$/
+    Pattern mvnPattern = ~/^[\[(](.*),(.*)[\])]$/
     input = input.strip()
-    var matcher = mvnPattern.matcher(input)
+    Matcher matcher = mvnPattern.matcher(input)
     if (!matcher.matches())
         return input
 

@@ -1,0 +1,8 @@
+plugins {
+    // see https://fabricmc.net/develop/ for new versions
+    id 'fabric-loom' version "${loom_version}" apply false
+    // see https://projects.neoforged.net/neoforged/moddevgradle for new versions
+    id 'net.neoforged.moddev' version "${neoforgegradle_version}" apply false
+
+    id 'net.neoforged.moddev.legacyforge' version "${legacyforgegradle_version}" apply false
+}

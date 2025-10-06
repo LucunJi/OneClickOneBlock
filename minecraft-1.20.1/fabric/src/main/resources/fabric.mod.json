@@ -1,0 +1,40 @@
+{
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
+    ],
+    "contact": {
+        "homepage": "https://modrinth.com/mod/oneclickoneblock",
+        "sources": "https://github.com/LucunJi/OneClickOneBlock",
+        "issues": "https://github.com/LucunJi/OneClickOneBlock/issues"
+    },
+    "license": "${license}",
+    "icon": "${mod_id}.png",
+    "environment": "*",
+    "entrypoints": {
+        "client": [
+            "io.github.lucunji.oneclickoneblock.OneClickOneBlock"
+        ],
+        "modmenu": [
+          "io.github.lucunji.oneclickoneblock.compat.ModMenuApiImpl"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json",
+        "${mod_id}.fabric.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": "*",
+        "fabric-key-binding-api-v1": "*",
+        "minecraft": ">=1.20 <=1.20.5",
+        "java": ">=${java_version}",
+        "cloth-config": "*"
+    },
+    "suggests": {
+        "modmenu": "*"
+    }
+}

@@ -1,7 +1,5 @@
 package io.github.lucunji.oneclickoneblock;
 
-import io.github.lucunji.oneclickoneblock.Constants;
-
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -18,6 +16,8 @@ public class Configs {
     }
 
     public final ConfigValue<Integer> delayTicks;
+    public final ConfigValue<Boolean> firstTimeTrigger;
+    public final ConfigValue<Boolean> notifyOnDisablingDelay;
 
     private Configs(ModConfigSpec.Builder builder) {
         // Inclusive at both ends, but actually comparing doubles, not int
@@ -26,5 +26,7 @@ public class Configs {
                 Constants.Configs.DELAY_TICKS_DEFAULT,
                 Constants.Configs.DELAY_TICKS_MIN,
                 Constants.Configs.DELAY_TICKS_MAX);
+        firstTimeTrigger = builder.define("first_time_trigger", true);
+        notifyOnDisablingDelay = builder.define("notify_on_disabling_delay", true);
     }
 }

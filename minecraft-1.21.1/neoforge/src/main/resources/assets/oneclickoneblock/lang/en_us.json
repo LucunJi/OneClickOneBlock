@@ -2,12 +2,25 @@
     "fml.menu.mods.info.description.oneclickoneblock": "Adds a little delay after insta-breaking the first block, so you won''t accidentally break the next block with an instant mining tool.",
 
     "oneclickoneblock.configuration.title": "One Click One Block",
+
     "oneclickoneblock.configuration.section.oneclickoneblock.client.toml.title": "One Click One Block Configuration",
     "oneclickoneblock.configuration.section.oneclickoneblock.client.toml": "One Click One Block",
 
     "oneclickoneblock.configuration.delay_ticks": "Delay Ticks",
     "oneclickoneblock.configuration.delay_ticks.desc": "Amount of delay after insta-breaking the first block in ticks.",
     "oneclickoneblock.configuration.delay_ticks.tooltip": "Amount of delay after insta-breaking the first block in ticks.",
+
+    "oneclickoneblock.configuration.first_time_trigger": "First Time Trigger",
+    "oneclickoneblock.configuration.first_time_trigger.desc": "Displaying help message when triggering the mod.",
+    "oneclickoneblock.configuration.first_time_trigger.tooltip": "Displaying help message when triggering the mod.",
+
+    "oneclickoneblock.configuration.notify_on_disabling_delay": "Notify on Disabling Delay",
+    "oneclickoneblock.configuration.notify_on_disabling_delay.desc": "Showing a message on hotbar when disabling delay (e.g. by pressing the disabling key).",
+    "oneclickoneblock.configuration.notify_on_disabling_delay.tooltip": "Showing a message on hotbar when disabling delay (e.g. by pressing the disabling key).",
+
+    "oneclickoneblock.message.first_time_trigger": "One Click One Block: This mod adds a little delay after insta-braking the first block. Delay and other aspects are configurable. (This message only shows up once)",
+    "oneclickoneblock.message.delay_disabled": "One Click One Block: Delay Disabled",
+    "oneclickoneblock.message.delay_enabled": "One Click One Block: Delay Enabled",
 
     "key.categories.oneclickoneblock": "One Click One Block",
     "key.oneclickoneblock.disable_delay": "Disable Insta-breaking Delay"

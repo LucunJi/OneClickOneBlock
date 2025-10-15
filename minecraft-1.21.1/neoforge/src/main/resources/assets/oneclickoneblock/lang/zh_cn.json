@@ -3,11 +3,24 @@
 
     "oneclickoneblock.configuration.title": "点到为止",
 
+    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml.title": "点到为止 配置",
+    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml": "点到为止",
+
     "oneclickoneblock.configuration.delay_ticks": "延迟游戏刻数",
     "oneclickoneblock.configuration.delay_ticks.desc": "瞬间破坏首个方块后的延迟。",
     "oneclickoneblock.configuration.delay_ticks.tooltip": "瞬间破坏首个方块后的延迟。",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml.title": "点到为止 配置",
-    "oneclickoneblock.configuration.section.oneclickoneblock.client.toml": "点到为止",
+
+    "oneclickoneblock.configuration.first_time_trigger": "第一次触发",
+    "oneclickoneblock.configuration.first_time_trigger.desc": "使模组在触发时显示消息。",
+    "oneclickoneblock.configuration.first_time_trigger.tooltip": "使模组在触发时显示消息。",
+
+    "oneclickoneblock.configuration.notify_on_disabling_delay": "禁用时显示提示",
+    "oneclickoneblock.configuration.notify_on_disabling_delay.desc": "在禁用延迟（比如按下禁用按键）时在物品栏上显示消息。",
+    "oneclickoneblock.configuration.notify_on_disabling_delay.tooltip": "在禁用延迟（比如按下禁用按键）时在物品栏上显示消息。",
+
+    "oneclickoneblock.message.first_time_trigger": "「点到为止」：本模组会在瞬间破坏方块时添加数毫秒的延迟防止误挖。可以配置延迟和其它功能。（本消息只显示一次）",
+    "oneclickoneblock.message.delay_disabled": "点到为止：延迟已取消",
+    "oneclickoneblock.message.delay_enabled": "点到为止：延迟已启用",
 
     "key.categories.oneclickoneblock": "点到为止",
     "key.oneclickoneblock.disable_delay": "禁止在瞬间破坏后添加延迟"

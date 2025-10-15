@@ -1,6 +1,15 @@
 {
     "text.autoconfig.oneclickoneblock.title": "One Click One Block",
+
     "text.autoconfig.oneclickoneblock.option.delayTicks": "Delay Ticks",
+    "text.autoconfig.oneclickoneblock.option.delayTicks.@Tooltip": "Amount of delay after insta-breaking the first block in ticks.",
+
+    "text.autoconfig.oneclickoneblock.option.notifyOnDisablingDelay": "Notify on Disabling Delay",
+    "text.autoconfig.oneclickoneblock.option.notifyOnDisablingDelay.@Tooltip": "Showing a message on hotbar when disabling delay.\n(e.g. by pressing the disabling key)",
+
+    "oneclickoneblock.message.first_time_trigger": "One Click One Block: This mod adds a little delay after insta-braking the first block. Delay and other aspects are configurable. (This message only shows up once)",
+    "oneclickoneblock.message.delay_disabled": "One Click One Block: Delay Disabled",
+    "oneclickoneblock.message.delay_enabled": "One Click One Block: Delay Enabled",
 
     "key.categories.oneclickoneblock": "One Click One Block",
     "key.oneclickoneblock.disable_delay": "Disable Insta-breaking Delay"

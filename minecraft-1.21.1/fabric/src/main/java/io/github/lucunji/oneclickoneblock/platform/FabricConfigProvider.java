@@ -8,4 +8,20 @@ public class FabricConfigProvider implements IConfigProvider {
     public int getDelayTicks() {
         return Configs.getConfigs().delayTicks;
     }
+
+    @Override
+    public boolean isFirstTimeTrigger() {
+        return Configs.getConfigs().firstTimeTrigger;
+    }
+
+    @Override
+    public void setFirstTimeTrigger(boolean newVal) {
+        Configs.getConfigs().firstTimeTrigger = newVal;
+        Configs.getConfigs().save();
+    }
+
+    @Override
+    public boolean shouldNotifyOnDisablingDelay() {
+        return Configs.getConfigs().notifyOnDisablingDelay;
+    }
 }

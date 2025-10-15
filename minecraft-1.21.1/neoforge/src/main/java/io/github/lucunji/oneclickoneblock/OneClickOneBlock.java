@@ -14,6 +14,14 @@ public class OneClickOneBlock {
         // Use NeoForge to bootstrap the Common mod.
         CommonClass.init();
         container.registerConfig(ModConfig.Type.CLIENT, Configs.CONFIG_SPEC);
-        container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        container.registerExtensionPoint(
+            IConfigScreenFactory.class,
+            (container_, screen) -> new ConfigurationScreen(
+                container_,
+                screen,
+                (context, key, element) -> key.equals(
+                    "first_time_trigger") ? null : element
+            )
+        );
     }
 }

@@ -26,6 +26,8 @@ jobs:
       - name: List All Artifacts
         id: list_all_artifacts
         run: |
+          shopt -s extglob
+
           {
             echo 'all_artifacts<<EOF'
             find minecraft*/!(common)/build/libs/*.jar

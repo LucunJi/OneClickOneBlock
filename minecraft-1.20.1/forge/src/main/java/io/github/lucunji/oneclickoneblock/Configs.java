@@ -1,6 +1,5 @@
 package io.github.lucunji.oneclickoneblock;
 
-import io.github.lucunji.oneclickoneblock.Constants;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 
@@ -17,6 +16,8 @@ public class Configs {
     }
 
     public final ConfigValue<Integer> delayTicks;
+    public final ConfigValue<Boolean> firstTimeTrigger;
+    public final ConfigValue<Boolean> notifyOnDisablingDelay;
 
     private Configs(ForgeConfigSpec.Builder builder) {
         // Inclusive at both ends, but actually comparing doubles, not int
@@ -28,5 +29,13 @@ public class Configs {
                         Constants.Configs.DELAY_TICKS_DEFAULT,
                         Constants.Configs.DELAY_TICKS_MIN,
                         Constants.Configs.DELAY_TICKS_MAX);
+        firstTimeTrigger = builder
+            .translation("oneclickoneblock.configuration.first_time_trigger")
+            .comment("oneclickoneblock.configuration.first_time_trigger.tooltip")
+            .define("first_time_trigger", true);
+        notifyOnDisablingDelay = builder
+            .translation("oneclickoneblock.configuration.notify_on_disabling_delay")
+            .comment("oneclickoneblock.configuration.notify_on_disabling_delay.tooltip")
+            .define("notify_on_disabling_delay", true);
     }
 }

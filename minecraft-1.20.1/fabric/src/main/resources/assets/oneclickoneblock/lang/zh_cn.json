@@ -1,6 +1,15 @@
 {
     "text.autoconfig.oneclickoneblock.title": "点到为止",
+
     "text.autoconfig.oneclickoneblock.option.delayTicks": "延迟游戏刻数",
+    "text.autoconfig.oneclickoneblock.option.delayTicks.@Tooltip": "瞬间破坏首个方块后的延迟。",
+
+    "text.autoconfig.oneclickoneblock.option.notifyOnDisablingDelay": "禁用时显示提示",
+    "text.autoconfig.oneclickoneblock.option.notifyOnDisablingDelay.@Tooltip": "在禁用延迟（比如按下禁用按键）时在物品栏上显示消息。",
+
+    "oneclickoneblock.message.first_time_trigger": "「点到为止」：本模组会在瞬间破坏方块时添加数毫秒的延迟防止误挖。可以配置延迟和其它功能。（本消息只显示一次）",
+    "oneclickoneblock.message.delay_disabled": "点到为止：延迟已取消",
+    "oneclickoneblock.message.delay_enabled": "点到为止：延迟已启用",
 
     "key.categories.oneclickoneblock": "点到为止",
     "key.oneclickoneblock.disable_delay": "禁止在瞬间破坏后添加延迟"

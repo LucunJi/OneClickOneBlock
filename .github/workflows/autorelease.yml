@@ -53,7 +53,6 @@ jobs:
               | uniq \
             )
 
-#            {
               echo 'files_all=<<EOF'
               find minecraft*/!(common)/build/libs/*"$combined_version".jar
               echo EOF
@@ -74,7 +73,6 @@ jobs:
 
               echo "release_name=${props[name]} v${props[version]} for mc ${minecraft_version}"
               echo "version=$combined_version"
-#            } >> "$GITHUB_OUTPUT"
           }
 
           main

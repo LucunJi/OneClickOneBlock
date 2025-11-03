@@ -1,0 +1,123 @@
+name: Auto Release
+on:
+  push:
+    tags:
+      - '*-*'
+env:
+  JAVA_VERSION: 21 # must be the same as the version used in build.gradle
+defaults:
+  run:
+    shell: bash
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test
+        run: |
+          function main {
+            local github_ref="${{ github.ref_name }}"
+            echo "$github_ref"
+          }
+          
+          main
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Setup Java
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'temurin'
+#          java-version: ${{ env.JAVA_VERSION }}
+#      - name: Setup Gradlew
+#        run: |
+#          chmod +x ./gradlew
+#          ./gradlew configureLaunch
+#      - name: Check Version
+#        run: |
+#          declare -A __props
+#          while IFS= read -r line; do
+#            __props["$(echo "$line" | cut -f 1)"]="$(echo "$line" | cut -f 2)";
+#          done < <(./gradlew -q properties | grep '.*: .*' | sed 's/:\s*/\t/')
+#
+#          __version="${__props[minecraft_version]}-${__props[version]}"
+#
+#          if [ "$__version" == "${{ github.ref_name }}" ]
+#          then
+#            echo "OK: version and tag match"
+#          else
+#            echo "ERR: version ${__version} and tag (${{ github.ref_name }}) does not match"
+#            exit 1
+#          fi
+
+#  build-release:
+#    needs: test
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#      - name: Setup Java
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'temurin'
+#          java-version: ${{ env.JAVA_VERSION }}
+#      - name: Build
+#        id: build
+#        run: |
+#          chmod +x ./gradlew
+#          ./gradlew clean build
+#      - name: Gen Release Info
+#        id: release_info
+#        run: |
+#          declare -A __props
+#          while IFS= read -r line; do
+#            __props["$(echo "$line" | cut -f 1)"]="$(echo "$line" | cut -f 2)";
+#          done < <(./gradlew -q properties | grep '.*: .*' | sed 's/:\s*/\t/')
+#
+#          {
+#            echo "version=${__props[minecraft_version]}-${__props[version]}"
+#
+#            echo 'files_all<<EOF'
+#            find minecraft*/!(common)/build/libs/!(*-javadoc|*-sources).jar
+#            echo EOF
+#
+#            echo "file_fabric=$(find ./fabric/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
+#            echo "file_forge=$(find ./forge/build/libs/ -name '*.jar' | grep -v 'javadoc\|sources\|dev' | head -n1)"
+#
+#            echo "release_name=${__props[name]} v${__props[version]} for mc ${__props[minecraft_version]}"
+#          } >> "$GITHUB_OUTPUT"
+#
+#      - name: Release to GitHub
+#        uses: Kir-Antipov/mc-publish@v3.3
+#        with:
+#          github-tag: ${{ github.ref_name }}
+#          github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
+#
+#          java: ${{ env.JAVA_VERSION }}
+#          version: ${{ steps.release_info.outputs.version }}
+#          files: ${{ steps.release_info.outputs.files_all }}
+#          name: ${{ steps.release_info.outputs.release_name }}
+#
+#      - name: Release Fabric Version
+#        uses: Kir-Antipov/mc-publish@v3.3
+#        with:
+#          modrinth-id: kuRp6C26
+#          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
+#          curseforge-id: 1292580
+#          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+#
+#          java: ${{ env.JAVA_VERSION }}
+#          version: ${{ steps.release_info.outputs.version }}
+#          files: ${{ steps.release_info.outputs.file_fabric }}
+#          name: ${{ steps.release_info.outputs.release_name }} (Fabric)
+#
+#      - name: Release Forge Version
+#        uses: Kir-Antipov/mc-publish@v3.3
+#        with:
+#          modrinth-id: kuRp6C26
+#          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
+#          curseforge-id: 1292580
+#          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+#
+#          java: ${{ env.JAVA_VERSION }}
+#          version: ${{ steps.release_info.outputs.version }}
+#          files: ${{ steps.release_info.outputs.file_forge }}
+#          name: ${{ steps.release_info.outputs.release_name }} (Forge)

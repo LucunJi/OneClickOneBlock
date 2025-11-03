@@ -35,15 +35,25 @@ jobs:
         id: release_info
         run: |
           function main {
+            shopt -s extglob
+
             local combined_version="${{ github.ref_name }}"
-            local mod_version="$(echo "$combined_version" | cut -d- -f1)"
-            local minecraft_version="$(echo "$combined_version" | cut -d- -f2)"
-               
+            local minecraft_version="$(echo "$combined_version" | cut -d- -f1)"
+            local mod_version="$(echo "$combined_version" | cut -d- -f2)"
+          
             local -A props
             while IFS= read -r line; do
               props["$(echo "$line" | cut -f 1)"]="$(echo "$line" | cut -f 2)"
             done < <(./gradlew -q properties | grep '.*: .*' | sed 's/:\s*/\t/')
-              
+          
+            if [ "$props[version]" == "$mod_version" ]
+            then
+              echo "OK: version in properties and in tag is the same"
+            else
+              echo "ERR: version in properties and in tag does not match"
+              exit 1
+            fi
+          
             local -a loaders
             while IFS= read -r line; do
               loaders+=("$line")
@@ -103,6 +113,7 @@ jobs:
 #          name: ${{ steps.release_info.outputs.release_name }} (Fabric)
 #
 #      - name: Release Forge Version
+#        if: ${{ contains(steps.release_info.outputs.loaders, 'forge') }}
 #        uses: Kir-Antipov/mc-publish@v3.3
 #        with:
 #          modrinth-id: ${{ env.MODRINTH_ID }}
@@ -116,6 +127,7 @@ jobs:
 #          name: ${{ steps.release_info.outputs.release_name }} (Forge)
 #
 #      - name: Release NeoForge Version
+#        if: ${{ contains(steps.release_info.outputs.loaders, 'neoforge') }}
 #        uses: Kir-Antipov/mc-publish@v3.3
 #        with:
 #          modrinth-id: ${{ env.MODRINTH_ID }}

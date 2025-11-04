@@ -74,7 +74,7 @@ jobs:
             )
 
             {
-              echo 'files_all=<<EOF'
+              echo 'files_all<<EOF'
               find_releases "$combined_version"
               echo EOF
 
@@ -87,7 +87,7 @@ jobs:
                
               for i in "${loaders[@]}";
               do
-                echo "files_${i}=<<EOF"
+                echo "files_${i}<<EOF"
                 find_releases "$combined_version" "$i"
                 echo EOF
               done

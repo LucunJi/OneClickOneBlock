@@ -11,7 +11,7 @@ defaults:
   run:
     shell: bash
 jobs:
-  test:
+  autorelease:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -111,7 +111,7 @@ jobs:
           name: ${{ steps.release_info.outputs.release_name }}
 
       - name: Release Fabric Version
-        if: ${{ contains(steps.release_info.outputs.loaders, 'fabric') }}
+        if: ${{ contains(fromJSON(steps.release_info.outputs.loaders), 'fabric') }}
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ env.MODRINTH_ID }}
@@ -125,7 +125,7 @@ jobs:
           name: ${{ steps.release_info.outputs.release_name }} (Fabric)
 
       - name: Release Forge Version
-        if: ${{ contains(steps.release_info.outputs.loaders, 'forge') }}
+        if: ${{ contains(fromJSON(steps.release_info.outputs.loaders), 'forge') }}
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ env.MODRINTH_ID }}
@@ -139,7 +139,7 @@ jobs:
           name: ${{ steps.release_info.outputs.release_name }} (Forge)
 
       - name: Release NeoForge Version
-        if: ${{ contains(steps.release_info.outputs.loaders, 'neoforge') }}
+        if: ${{ contains(fromJSON(steps.release_info.outputs.loaders), 'neoforge') }}
         uses: Kir-Antipov/mc-publish@v3.3
         with:
           modrinth-id: ${{ env.MODRINTH_ID }}

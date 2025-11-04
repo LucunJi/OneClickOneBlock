@@ -68,11 +68,12 @@ jobs:
             while IFS= read -r line; do
               loaders+=("$line")
             done < <(find_releases "$combined_version" \
-              | sed 's:minecraft[^/]*/\([^/]*\).*:\1:' \
+              | sed 's:.*minecraft[^/]*/\([^/]*\).*:\1:' \
               | sort \
               | uniq \
             )
 
+            {
               echo 'files_all=<<EOF'
               find_releases "$combined_version"
               echo EOF
@@ -93,59 +94,60 @@ jobs:
 
               echo "release_name=${props[name]} v${props[version]} for mc ${minecraft_version}"
               echo "version=$combined_version"
+            } >> "$GITHUB_OUTPUT"
           }
 
           main
 
-#      - name: Release to GitHub
-#        uses: Kir-Antipov/mc-publish@v3.3
-#        with:
-#          github-tag: ${{ github.ref_name }}
-#          github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
-#
-#          java: ${{ env.JAVA_VERSION }}
-#          version: ${{ steps.release_info.outputs.version }}
-#          files: ${{ steps.release_info.outputs.files_all }}
-#          name: ${{ steps.release_info.outputs.release_name }}
-#
-#      - name: Release Fabric Version
-#        if: ${{ contains(steps.release_info.outputs.loaders, 'fabric') }}
-#        uses: Kir-Antipov/mc-publish@v3.3
-#        with:
-#          modrinth-id: ${{ env.MODRINTH_ID }}
-#          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
-#          curseforge-id: ${{ env.CURSEFORGE_ID }}
-#          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
-#
-#          java: ${{ env.JAVA_VERSION }}
-#          version: ${{ steps.release_info.outputs.version }}
-#          files: ${{ steps.release_info.outputs.files_fabric }}
-#          name: ${{ steps.release_info.outputs.release_name }} (Fabric)
-#
-#      - name: Release Forge Version
-#        if: ${{ contains(steps.release_info.outputs.loaders, 'forge') }}
-#        uses: Kir-Antipov/mc-publish@v3.3
-#        with:
-#          modrinth-id: ${{ env.MODRINTH_ID }}
-#          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
-#          curseforge-id: ${{ env.CURSEFORGE_ID }}
-#          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
-#
-#          java: ${{ env.JAVA_VERSION }}
-#          version: ${{ steps.release_info.outputs.version }}
-#          files: ${{ steps.release_info.outputs.files_forge }}
-#          name: ${{ steps.release_info.outputs.release_name }} (Forge)
-#
-#      - name: Release NeoForge Version
-#        if: ${{ contains(steps.release_info.outputs.loaders, 'neoforge') }}
-#        uses: Kir-Antipov/mc-publish@v3.3
-#        with:
-#          modrinth-id: ${{ env.MODRINTH_ID }}
-#          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
-#          curseforge-id: ${{ env.CURSEFORGE_ID }}
-#          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
-#
-#          java: ${{ env.JAVA_VERSION }}
-#          version: ${{ steps.release_info.outputs.version }}
-#          files: ${{ steps.release_info.outputs.files_neoforge }}
-#          name: ${{ steps.release_info.outputs.release_name }} (NeoForge)
+      - name: Release to GitHub
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          github-tag: ${{ github.ref_name }}
+          github-token: ${{ secrets.MC_PUBLISH_GITHUB_PAT }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.files_all }}
+          name: ${{ steps.release_info.outputs.release_name }}
+
+      - name: Release Fabric Version
+        if: ${{ contains(steps.release_info.outputs.loaders, 'fabric') }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ env.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
+          curseforge-id: ${{ env.CURSEFORGE_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.files_fabric }}
+          name: ${{ steps.release_info.outputs.release_name }} (Fabric)
+
+      - name: Release Forge Version
+        if: ${{ contains(steps.release_info.outputs.loaders, 'forge') }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ env.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
+          curseforge-id: ${{ env.CURSEFORGE_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.files_forge }}
+          name: ${{ steps.release_info.outputs.release_name }} (Forge)
+
+      - name: Release NeoForge Version
+        if: ${{ contains(steps.release_info.outputs.loaders, 'neoforge') }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: ${{ env.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_UPLOAD_TOKEN }}
+          curseforge-id: ${{ env.CURSEFORGE_ID }}
+          curseforge-token: ${{ secrets.CURSEFORGE_UPLOAD_TOKEN }}
+
+          java: ${{ env.JAVA_VERSION }}
+          version: ${{ steps.release_info.outputs.version }}
+          files: ${{ steps.release_info.outputs.files_neoforge }}
+          name: ${{ steps.release_info.outputs.release_name }} (NeoForge)

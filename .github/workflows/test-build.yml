@@ -26,11 +26,13 @@ jobs:
       - name: List All Artifacts
         id: list_all_artifacts
         run: |
-          shopt -s extglob
-
+          set -eu
+ 
           {
             echo 'all_artifacts<<EOF'
-            find minecraft*/!(common)/build/libs/*.jar
+            find ./minecraft* \
+              -path "*/build/libs/*.jar" \
+              ! -name '*-common-*.jar'
             echo EOF
           } >> "$GITHUB_OUTPUT"
       - name: Upload

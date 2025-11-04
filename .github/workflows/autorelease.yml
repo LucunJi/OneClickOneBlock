@@ -34,9 +34,19 @@ jobs:
       - name: Gen Release Info
         id: release_info
         run: |
+          function find_releases {
+            local combined_version="${1:-*}"
+            local loader="${2:-*}"
+            find ./minecraft* \
+              -path "*/build/libs/*-${loader}-${combined_version}.jar" \
+              ! -name '*-common-*.jar' \
+              ! -name '*-sources.jar' \
+              ! -name '*javadoc.jar'
+          }
+          
           function main {
-            shopt -s extglob
-
+            set -eu
+ 
             local combined_version="${{ github.ref_name }}"
             local minecraft_version="$(echo "$combined_version" | cut -d- -f1)"
             local mod_version="$(echo "$combined_version" | cut -d- -f2)"
@@ -46,7 +56,7 @@ jobs:
               props["$(echo "$line" | cut -f 1)"]="$(echo "$line" | cut -f 2)"
             done < <(./gradlew -q properties | grep '.*: .*' | sed 's/:\s*/\t/')
           
-            if [ "$props[version]" == "$mod_version" ]
+            if [ "${props[version]}" == "$mod_version" ]
             then
               echo "OK: version in properties and in tag is the same"
             else
@@ -57,14 +67,14 @@ jobs:
             local -a loaders
             while IFS= read -r line; do
               loaders+=("$line")
-            done < <(find minecraft*/!(common)/build/libs/*"$combined_version".jar \
+            done < <(find_releases "$combined_version" \
               | sed 's:minecraft[^/]*/\([^/]*\).*:\1:' \
               | sort \
               | uniq \
             )
 
               echo 'files_all=<<EOF'
-              find minecraft*/!(common)/build/libs/*"$combined_version".jar
+              find_releases "$combined_version"
               echo EOF
 
               echo "loaders=[$(
@@ -77,7 +87,7 @@ jobs:
               for i in "${loaders[@]}";
               do
                 echo "files_${i}=<<EOF"
-                find minecraft*/!(common)/build/libs/*"$i"-"$combined_version".jar
+                find_releases "$combined_version" "$i"
                 echo EOF
               done
 
